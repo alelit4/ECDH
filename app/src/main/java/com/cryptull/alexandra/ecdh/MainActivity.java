@@ -9,6 +9,10 @@ import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import org.spongycastle.jcajce.provider.config.ConfigurableProvider;
+import org.spongycastle.jce.spec.ECParameterSpec;
+import org.spongycastle.math.ec.ECCurve;
+
 import org.spongycastle.util.encoders.Hex;
 
 import java.math.BigInteger;
@@ -21,11 +25,9 @@ import java.security.NoSuchAlgorithmException;
 import java.security.NoSuchProviderException;
 import java.security.SecureRandom;
 import java.security.Security;
-import java.security.spec.ECFieldFp;
+
 import java.security.spec.ECGenParameterSpec;
-import java.security.spec.ECParameterSpec;
 import java.security.spec.ECPoint;
-import java.security.spec.EllipticCurve;
 
 import javax.crypto.KeyAgreement;
 
@@ -34,6 +36,13 @@ public class MainActivity extends AppCompatActivity {
     static {
         Security.insertProviderAt(new org.spongycastle.jce.provider.BouncyCastleProvider(), 1);
     }
+
+    BigInteger q = new BigInteger("fffffffffffffffffffffffffffffffeffffffffffffffff", 16);
+    BigInteger a = new BigInteger("fffffffffffffffffffffffffffffffefffffffffffffffc", 16);
+    BigInteger b = new BigInteger("fffffffffffffffffffffffffffffffefffffffffffffffc", 16);
+    BigInteger n = new BigInteger("883423532389192164791648750360308884807550341691627752275345424702807307", 16);
+    byte[] G_hex = Hex.decode("020ffa963cdca8816ccc33b8642bedf905c3d358573d3f27fbbd3b3cb9aaaf");
+    org.spongycastle.math.ec.ECPoint G;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,16 +61,11 @@ public class MainActivity extends AppCompatActivity {
                 KeyPairGenerator keyGen = null;
                 try {
                     keyGen = KeyPairGenerator.getInstance("ECDH", "SC");
-                    EllipticCurve curve = new EllipticCurve(new ECFieldFp(new BigInteger(
-                            "fffffffffffffffffffffffffffffffeffffffffffffffff", 16)), new BigInteger(
-                            "fffffffffffffffffffffffffffffffefffffffffffffffc", 16), new BigInteger(
-                            "fffffffffffffffffffffffffffffffefffffffffffffffc", 16));
 
-
-                    ECGenParameterSpec ecSpec = new ECGenParameterSpec("prime192v1");
+                    ECCurve curve = new ECCurve.Fp( q, a, b);
+                    G = curve.decodePoint(G_hex);
+                    ECParameterSpec ecSpec = new ECParameterSpec( curve, G, n);
                     keyGen.initialize(ecSpec, new SecureRandom());
-
-
 
                     KeyAgreement aKeyAgree = KeyAgreement.getInstance("ECDH", "SC");
                     KeyPair aPair = keyGen.generateKeyPair();

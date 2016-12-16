@@ -5,27 +5,33 @@
     density="xxxhdpi"
     format="8"
     plugin-version="2.2.2"
-    timestamp="44215771102633"
+    timestamp="45150764329280"
     token="6110996440957393317"
-    verifier="FULL_BUILD_REQUESTED" >
+    verifier="COLD_SWAP_REQUESTED" >
 
     <task
         name="javac"
-        duration="1526" />
+        duration="2097" />
     <task
         name="instant-run-dex"
         duration="0" />
     <task
         name="instant-run-transform"
-        duration="252" />
+        duration="101" />
     <task
         name="verifier"
-        duration="8" />
+        duration="9" />
 
-    <artifact
-        location="C:\Users\Alexandra\Desktop\ECDH\app\build\outputs\apk\app-debug.apk"
-        type="MAIN" />
-
+    <build
+        timestamp="44215771102633"
+        verifier="FULL_BUILD_REQUESTED" >
+        <artifact
+            location="C:\Users\Alexandra\Desktop\ECDH\app\build\outputs\apk\app-debug.apk"
+            type="MAIN" />
+    </build>
+    <build
+        timestamp="45150764329280"
+        verifier="COLD_SWAP_REQUESTED" />
     <build
         timestamp="593133577800411"
         verifier="COLD_SWAP_REQUESTED" >
