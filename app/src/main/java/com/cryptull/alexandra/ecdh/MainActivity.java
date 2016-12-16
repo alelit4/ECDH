@@ -9,6 +9,8 @@ import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import org.spongycastle.util.encoders.Hex;
+
 import java.math.BigInteger;
 import java.security.InvalidAlgorithmParameterException;
 import java.security.InvalidKeyException;
@@ -20,6 +22,7 @@ import java.security.NoSuchProviderException;
 import java.security.SecureRandom;
 import java.security.Security;
 import java.security.spec.ECFieldFp;
+import java.security.spec.ECGenParameterSpec;
 import java.security.spec.ECParameterSpec;
 import java.security.spec.ECPoint;
 import java.security.spec.EllipticCurve;
@@ -54,14 +57,10 @@ public class MainActivity extends AppCompatActivity {
                             "fffffffffffffffffffffffffffffffefffffffffffffffc", 16), new BigInteger(
                             "fffffffffffffffffffffffffffffffefffffffffffffffc", 16));
 
-/*
-                    ECParameterSpec ecSpec = new ECParameterSpec(curve, new ECPoint(new BigInteger(
-                            "fffffffffffffffffffffffffffffffefffffffffffffffc", 16), new BigInteger(
-                            "fffffffffffffffffffffffffffffffefffffffffffffffc", 16)), new BigInteger(
-                            "fffffffffffffffffffffffffffffffefffffffffffffffc", 16), 1);
 
+                    ECGenParameterSpec ecSpec = new ECGenParameterSpec("prime192v1");
                     keyGen.initialize(ecSpec, new SecureRandom());
-*/
+
 
 
                     KeyAgreement aKeyAgree = KeyAgreement.getInstance("ECDH", "SC");
@@ -86,6 +85,8 @@ public class MainActivity extends AppCompatActivity {
                 } catch (NoSuchProviderException e) {
                     e.printStackTrace();
                 } catch (InvalidKeyException e) {
+                    e.printStackTrace();
+                } catch (InvalidAlgorithmParameterException e) {
                     e.printStackTrace();
                 }
 
