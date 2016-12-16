@@ -1,0 +1,7 @@
+#Fri Dec 16 08:30:47 GMT 2016
+base.0=C\:\\Users\\Alexandra\\Desktop\\ECDH\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10\\instant-run-bootstrap_63498d4214e4f0a64fc2708b8fb5413786621959
+renamed.1=classes2.dex
+renamed.0=classes.dex
+file.1=C\:\\Users\\Alexandra\\Desktop\\ECDH\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10\\instant-run_6d4acc7e9288bc1b8b0665476a7b5810ea2117de\\classes.dex
+base.1=C\:\\Users\\Alexandra\\Desktop\\ECDH\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10\\instant-run_6d4acc7e9288bc1b8b0665476a7b5810ea2117de
+file.0=C\:\\Users\\Alexandra\\Desktop\\ECDH\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10\\instant-run-bootstrap_63498d4214e4f0a64fc2708b8fb5413786621959\\classes.dex
